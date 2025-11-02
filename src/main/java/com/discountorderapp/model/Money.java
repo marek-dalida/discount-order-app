@@ -1,5 +1,7 @@
 package com.discountorderapp.model;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
@@ -8,6 +10,7 @@ public class Money {
     private static final int SCALE = 2;
     private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
+    @Getter
     private final BigDecimal amount;
 
     private Money(BigDecimal amount) {
