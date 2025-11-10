@@ -1,0 +1,12 @@
+spring:
+  application-name: discount-order-app
+discount:
+  type: value
+  value: 5
+  pct: 10
+app:
+  orders:
+    - order-code: ABC123
+      order-amount: 11.11
+    - order-code: BCD234
+      order-amount: 22.22

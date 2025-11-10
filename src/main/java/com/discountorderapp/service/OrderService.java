@@ -1,5 +1,6 @@
 package com.discountorderapp.service;
 
+import com.discountorderapp.config.AppProperties;
 import com.discountorderapp.discount.DiscountStrategy;
 import com.discountorderapp.model.Money;
 import com.discountorderapp.model.Order;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -18,6 +20,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final DiscountStrategy discountStrategy;
+    private final AppProperties appProperties;
 
     public void addOrder(String orderCode, BigDecimal totalPrice) {
         var totalOrderPrice = Money.of(totalPrice);
@@ -28,5 +31,14 @@ public class OrderService {
 
         var order = new Order(orderCode, totalOrderPrice, priceWithDiscount);
         orderRepository.save(order);
+    }
+
+    public List<Order> getAllOrders() {
+        return orderRepository.getOrders();
+    }
+
+    public List<Order> getInitOrders() {
+        appProperties.getOrders().forEach(order -> addOrder(order.orderCode(), order.orderAmount()));
+        return orderRepository.getOrders();
     }
 }
