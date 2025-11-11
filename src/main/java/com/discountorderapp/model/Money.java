@@ -45,38 +45,11 @@ public class Money {
         }
     }
 
-    //
-
-    public static Money of(double amount) {
-        return of(BigDecimal.valueOf(amount));
-    }
-
-    public static Money of(String amount) {
-        try {
-            return of(new BigDecimal(amount));
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Nieprawidłowy format kwoty: " + amount, e);
-        }
-    }
-
-    /**
-     * Tworzy obiekt Money o wartości zero
-     */
-    public static Money zero() {
-        return new Money(BigDecimal.ZERO);
-    }
-
-    /**
-     * Dodaje dwie kwoty
-     */
     public Money add(Money other) {
         Objects.requireNonNull(other, "Argument nie może być null");
         return new Money(this.amount.add(other.amount));
     }
 
-    /**
-     * Mnoży przez liczbę
-     */
     public Money multiply(BigDecimal multiplier) {
         Objects.requireNonNull(multiplier, "Mnożnik nie może być null");
         BigDecimal result = this.amount.multiply(multiplier);
@@ -84,67 +57,10 @@ public class Money {
         return new Money(result);
     }
 
-    /**
-     * Mnoży przez liczbę
-     */
     public Money multiply(double multiplier) {
         return multiply(BigDecimal.valueOf(multiplier));
     }
 
-    /**
-     * Dzieli przez liczbę
-     */
-    public Money divide(BigDecimal divisor) {
-        Objects.requireNonNull(divisor, "Dzielnik nie może być null");
-        if (divisor.compareTo(BigDecimal.ZERO) == 0) {
-            throw new ArithmeticException("Nie można dzielić przez zero");
-        }
-        BigDecimal result = this.amount.divide(divisor, SCALE, ROUNDING_MODE);
-        validateAmount(result);
-        return new Money(result);
-    }
-
-    /**
-     * Dzieli przez liczbę
-     */
-    public Money divide(double divisor) {
-        return divide(BigDecimal.valueOf(divisor));
-    }
-
-    /**
-     * Porównuje czy ta kwota jest większa od innej
-     */
-    public boolean isGreaterThan(Money other) {
-        return this.amount.compareTo(other.amount) > 0;
-    }
-
-    /**
-     * Porównuje czy ta kwota jest mniejsza od innej
-     */
-    public boolean isLessThan(Money other) {
-        return this.amount.compareTo(other.amount) < 0;
-    }
-
-    /**
-     * Sprawdza czy kwota jest zerem
-     */
-    public boolean isZero() {
-        return this.amount.compareTo(BigDecimal.ZERO) == 0;
-    }
-
-    /**
-     * Zwraca wartość jako BigDecimal
-     */
-    public BigDecimal toBigDecimal() {
-        return amount;
-    }
-
-    /**
-     * Zwraca wartość jako double
-     */
-    public double toDouble() {
-        return amount.doubleValue();
-    }
 
     @Override
     public boolean equals(Object o) {

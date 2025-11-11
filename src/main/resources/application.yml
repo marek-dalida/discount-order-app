@@ -1,7 +1,7 @@
 spring:
   application-name: discount-order-app
 discount:
-  type: value
+  type: pct
   value: 5
   pct: 10
 app:
@@ -10,3 +10,5 @@ app:
       order-amount: 11.11
     - order-code: BCD234
       order-amount: 22.22
+    - order-code: ZZZ123
+      order-amount: 31.24

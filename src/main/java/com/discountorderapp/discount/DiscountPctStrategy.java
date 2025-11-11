@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConditionalOnProperty(name = "discount.type", havingValue = "pct")
-public class DiscountPctStrategy {
+public class DiscountPctStrategy implements DiscountStrategy {
     private final Integer discountPct;
 
     public DiscountPctStrategy(@Value("${discount.pct}") Integer discountPct) {
