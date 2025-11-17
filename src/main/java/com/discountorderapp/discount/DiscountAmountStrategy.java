@@ -23,6 +23,6 @@ public class DiscountAmountStrategy implements DiscountStrategy {
 
     @Override
     public Money applyDiscount(Money money) {
-        return money.subtract(discountValue);
+        return money.subtractToZeroMin(discountValue);
     }
 }

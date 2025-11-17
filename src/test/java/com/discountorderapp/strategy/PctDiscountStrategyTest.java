@@ -2,12 +2,13 @@ package com.discountorderapp.strategy;
 
 import com.discountorderapp.discount.DiscountPctStrategy;
 import com.discountorderapp.model.Money;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-public class PctDiscountStrategyTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+class PctDiscountStrategyTest {
 
     @Test
     void shouldDisocuntMoneyByDefinedPercent() {
@@ -15,6 +16,6 @@ public class PctDiscountStrategyTest {
         var amount = Money.of(BigDecimal.valueOf(90));
         var discountedValue = pctDiscountStrategy.applyDiscount(amount);
         var expectedValue = amount.multiply(0.9);
-        Assertions.assertEquals(expectedValue, discountedValue);
+        assertThat(discountedValue.getAmount()).isEqualTo(expectedValue.getAmount());
     }
 }

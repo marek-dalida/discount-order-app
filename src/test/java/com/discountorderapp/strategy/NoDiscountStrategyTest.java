@@ -2,12 +2,13 @@ package com.discountorderapp.strategy;
 
 import com.discountorderapp.discount.NoDiscountStrategy;
 import com.discountorderapp.model.Money;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-public class NoDiscountStrategyTest {
+import static org.assertj.core.api.Assertions.assertThat;
+
+class NoDiscountStrategyTest {
 
     @Test
     void shouldReturnOriginalPrice() {
@@ -15,6 +16,6 @@ public class NoDiscountStrategyTest {
             var orginalPrice = Money.of(BigDecimal.valueOf(37.37));
 
             var resultPrice = noDiscountStrategy.applyDiscount(orginalPrice);
-            Assertions.assertEquals(orginalPrice, resultPrice);
+        assertThat(resultPrice).isSameAs(orginalPrice);
     }
 }

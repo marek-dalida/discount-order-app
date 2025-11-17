@@ -6,8 +6,6 @@ import com.discountorderapp.model.Money;
 import com.discountorderapp.model.Order;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -26,15 +24,11 @@ public class OrderService {
         var totalOrderPrice = Money.of(totalPrice);
         var priceWithDiscount = discountStrategy.applyDiscount(totalOrderPrice);
 
-        log.info("Order with code: {} befor deiscount: {}, after discount: {}",
+        log.info("Order with code: {} befor discount: {}, after discount: {}",
                 orderCode, totalOrderPrice.getAmount(), priceWithDiscount.getAmount());
 
         var order = new Order(orderCode, totalOrderPrice, priceWithDiscount);
         orderRepository.save(order);
-    }
-
-    public List<Order> getAllOrders() {
-        return orderRepository.getOrders();
     }
 
     public List<Order> getInitOrders() {
