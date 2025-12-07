@@ -1,1 +1,3 @@
-Simple test discount order app
+## Discount Order App
+
+Simple spring boot discount order app

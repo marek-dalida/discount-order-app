@@ -12,10 +12,10 @@ class NoDiscountStrategyTest {
 
     @Test
     void shouldReturnOriginalPrice() {
-            var noDiscountStrategy = new NoDiscountStrategy();
-            var orginalPrice = Money.of(BigDecimal.valueOf(37.37));
+        var noDiscountStrategy = new NoDiscountStrategy();
+        var originalPrice = Money.of(BigDecimal.valueOf(37.37));
 
-            var resultPrice = noDiscountStrategy.applyDiscount(orginalPrice);
-        assertThat(resultPrice).isSameAs(orginalPrice);
+        var resultPrice = noDiscountStrategy.applyDiscount(originalPrice);
+        assertThat(resultPrice).isSameAs(originalPrice);
     }
 }

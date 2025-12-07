@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PctDiscountStrategyTest {
 
     @Test
-    void shouldDisocuntMoneyByDefinedPercent() {
+    void shouldDiscountMoneyByDefinedPercent() {
         var pctDiscountStrategy = new DiscountPctStrategy(10);
         var amount = Money.of(BigDecimal.valueOf(90));
         var discountedValue = pctDiscountStrategy.applyDiscount(amount);

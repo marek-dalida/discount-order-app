@@ -1,13 +1,11 @@
 package com.discountorderapp.config;
 
-import com.discountorderapp.model.Order;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 @Configuration
 @ConfigurationProperties(prefix = "app")

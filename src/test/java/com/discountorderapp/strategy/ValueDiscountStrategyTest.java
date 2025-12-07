@@ -22,7 +22,7 @@ class ValueDiscountStrategyTest {
     }
 
     @Test
-    void shouldReturnZeroAfterDisocunt() {
+    void shouldReturnZeroAfterDiscount() {
         var amount = Money.of(BigDecimal.valueOf(10));
         var discountedValue = discountAmountStrategy.applyDiscount(amount);
         var expectedValue = Money.of(BigDecimal.ZERO);
